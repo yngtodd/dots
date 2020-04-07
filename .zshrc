@@ -4,10 +4,11 @@
 # User: Todd Young
 # Github: yngtodd
 
-# Set name of the theme to load --- if set to "random", it will
-ZSH_THEME="cloud"
+# Theme
+# -----
 
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "risto" "cloud" )
+ZSH_THEME="cloud"
+ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "risto" "cloud" )
 
 plugins=(
   git
