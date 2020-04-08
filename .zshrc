@@ -13,6 +13,7 @@ ZSH_THEME_RANDOM_CANDIDATES=( "ne robbyrussell" "risto" "cloud" )
 plugins=(
   git
   osx
+  zsh-z
 )
 
 # Aliases

@@ -11,6 +11,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'chriskempson/base16-vim'
 Plug 'junegunn/vim-journal'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'nightsense/forgotten'
@@ -57,7 +58,7 @@ let g:python3_host_prog = expand('~/.config/nvim/env/bin/python')
 
 """ Coloring
 syntax on
-color dracula
+color zazen
 highlight Pmenu guibg=white guifg=black gui=bold
 highlight Comment gui=bold
 highlight Normal gui=none
@@ -174,6 +175,25 @@ endfunction
 " Dracula Mode (Dark)
 function! ColorDracula()
     let g:airline_theme=''
+    " Color name (:help gui-colors) or RGB color
+    let g:limelight_conceal_guifg = 'DarkGray'
+    let g:limelight_conceal_guifg = '#777777'
+    " Default: 0.5
+    let g:limelight_default_coefficient = 0.7
+
+    " Number of preceding/following paragraphs to include (default: 0)
+    let g:limelight_paragraph_span = 1
+
+    " Beginning/end of paragraph
+    "   When there's no empty line between the paragraphs
+    "   and each paragraph starts with indentation
+    let g:limelight_bop = '^\s'
+    let g:limelight_eop = '\ze\n^\s'
+
+    " Highlighting priority (default: 10)
+    "   Set it to -1 not to overrule hlsearch
+    let g:limelight_priority = -1
+
     color dracula
     IndentLinesEnable
 endfunction
@@ -196,10 +216,36 @@ endfunction
 
 " Zazen Mode (Black & White)
 function! ColorZazen()
-    let g:airline_theme='badcat'
+    "let g:airline_theme=''
+    " Color name (:help gui-colors) or RGB color
+    let g:limelight_conceal_guifg = 'DarkGray'
+    let g:limelight_conceal_guifg = '#777777'
+    " Default: 0.5
+    let g:limelight_default_coefficient = 0.7
+
+    " Number of preceding/following paragraphs to include (default: 0)
+    let g:limelight_paragraph_span = 1
+
+    " Beginning/end of paragraph
+    "   When there's no empty line between the paragraphs
+    "   and each paragraph starts with indentation
+    let g:limelight_bop = '^\s'
+    let g:limelight_eop = '\ze\n^\s'
+
+    " Highlighting priority (default: 10)
+    "   Set it to -1 not to overrule hlsearch
+    let g:limelight_priority = -1
     color zazen
     IndentLinesEnable
 endfunction
+
+" Base16 Default (Dark)
+function! ColorBase16Dark()
+    let g:airline_theme=''
+    color base16-default-dark
+    IndentLinesEnable
+endfunction
+
 
 """ Custom Mappings
 
@@ -213,6 +259,7 @@ nmap <leader>e1 :call ColorDracula()<CR>
 nmap <leader>e2 :call ColorSeoul256()<CR>
 nmap <leader>e3 :call ColorForgotten()<CR>
 nmap <leader>e4 :call ColorZazen()<CR>
+nmap <leader>e5 :call ColorBase16Dark()<CR>
 nmap <leader>r :so ~/.config/nvim/init.vim<CR>
 nmap <leader>t :call TrimWhitespace()<CR>
 xmap <leader>a gaip*
