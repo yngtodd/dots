@@ -47,11 +47,20 @@ Plug 'honza/vim-snippets'
 Plug 'metakirby5/codi.vim'
 Plug 'dkarter/bullets.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
+""" Vimtex
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+
 """ Python3 VirtualEnv
-let g:python3_host_prog = expand('~/.config/nvim/env/bin/python')
+let g:python3_host_prog = expand('~/.local/opt/anaconda3/envs/darts/bin/python')
 
 """ Coloring
 syntax on
@@ -109,9 +118,12 @@ set completeopt-=preview
 let g:SuperTabDefaultCompletionType = "<C-n>"
 
 " Ultisnips
-let g:UltiSnipsExpandTrigger="<C-Space>"
+let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<C-x>"
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " EasyAlign
 xmap ga <Plug>(EasyAlign)
