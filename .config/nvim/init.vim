@@ -48,9 +48,6 @@ Plug 'metakirby5/codi.vim'
 Plug 'dkarter/bullets.vim'
 Plug 'rust-lang/rust.vim'
 
-" Entertainment
-" Plug 'ryanss/vim-hackernews'
-
 call plug#end()
 
 """ Python3 VirtualEnv
@@ -58,7 +55,7 @@ let g:python3_host_prog = expand('~/.config/nvim/env/bin/python')
 
 """ Coloring
 syntax on
-color zazen
+color dracula
 highlight Pmenu guibg=white guifg=black gui=bold
 highlight Comment gui=bold
 highlight Normal gui=none
@@ -80,7 +77,7 @@ set list listchars=trail:»,tab:»-
 set fillchars+=vert:\ 
 set wrap breakindent
 set encoding=utf-8
-set number
+set number relativenumber
 set title
 
 """ Plugin Configurations
@@ -182,7 +179,7 @@ function! ColorDracula()
     let g:limelight_default_coefficient = 0.7
 
     " Number of preceding/following paragraphs to include (default: 0)
-    let g:limelight_paragraph_span = 1
+    let g:limelight_paragraph_span = 2
 
     " Beginning/end of paragraph
     "   When there's no empty line between the paragraphs
