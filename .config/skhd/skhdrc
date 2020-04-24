@@ -82,13 +82,13 @@
 
 # application specific bindings
 #
-# cmd - n [
-#     "kitty"       : echo "hello kitty"
-#     *             : echo "hello everyone"
-#     "qutebrowser" : echo "hello qutebrowser"
-#     "terminal"    ~
-#     "finder"      : false
-# ]
+cmd - h [
+    "kitty"       : echo "hello kitty"
+    *             : echo "hello everyone"
+    "qutebrowser" : echo "hello qutebrowser"
+    "terminal"    ~
+    "finder"      : false
+]
 
 # specify a file that should be included as an additional config-file.
 # treated as an absolutepath if the filename begins with '/' otherwise
@@ -99,11 +99,10 @@
 
 # prevent skhd from monitoring events for specific applications.
 #
-# .blacklist [
-#    "kitty"
-#    "terminal"
-#    "qutebrowser"
-# ]
+.blacklist [
+   "chrome"
+   "qutebrowser"
+]
 
 # open terminal, blazingly fast compared to iTerm/Hyper
 cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~

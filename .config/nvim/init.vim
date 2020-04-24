@@ -16,6 +16,7 @@ Plug 'junegunn/vim-journal'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'nightsense/forgotten'
 Plug 'zaki/zazen'
+Plug 'wadackel/vim-dogrun'
 
 " Aethetics - Additional
 Plug 'nightsense/nemo'
@@ -48,6 +49,13 @@ Plug 'metakirby5/codi.vim'
 Plug 'dkarter/bullets.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'lervag/vimtex'
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'junegunn/fzf'
 
 call plug#end()
 
@@ -64,7 +72,7 @@ let g:python3_host_prog = expand('~/.local/opt/anaconda3/envs/darts/bin/python')
 
 """ Coloring
 syntax on
-color dracula
+color dracula 
 highlight Pmenu guibg=white guifg=black gui=bold
 highlight Comment gui=bold
 highlight Normal gui=none
@@ -90,6 +98,15 @@ set number relativenumber
 set title
 
 """ Plugin Configurations
+
+" Language clients
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
 " NERDTree
 let NERDTreeShowHidden=1
@@ -207,6 +224,31 @@ function! ColorDracula()
     IndentLinesEnable
 endfunction
 
+function! ColorDogRun()
+    let g:airline_theme=''
+    " Color name (:help gui-colors) or RGB color
+    let g:limelight_conceal_guifg = 'DarkGray'
+    let g:limelight_conceal_guifg = '#777777'
+    " Default: 0.5
+    let g:limelight_default_coefficient = 0.7
+
+    " Number of preceding/following paragraphs to include (default: 0)
+    let g:limelight_paragraph_span = 2
+
+    " Beginning/end of paragraph
+    "   When there's no empty line between the paragraphs
+    "   and each paragraph starts with indentation
+    let g:limelight_bop = '^\s'
+    let g:limelight_eop = '\ze\n^\s'
+
+    " Highlighting priority (default: 10)
+    "   Set it to -1 not to overrule hlsearch
+    let g:limelight_priority = -1
+
+    colorscheme dogrun
+    IndentLinesEnable
+endfunction
+
 " Seoul256 Mode (Dark & Light)
 function! ColorSeoul256()
     let g:airline_theme='silver'
@@ -269,6 +311,7 @@ nmap <leader>e2 :call ColorSeoul256()<CR>
 nmap <leader>e3 :call ColorForgotten()<CR>
 nmap <leader>e4 :call ColorZazen()<CR>
 nmap <leader>e5 :call ColorBase16Dark()<CR>
+nmap <leader>e6 :call ColorDogRun()<CR>
 nmap <leader>r :so ~/.config/nvim/init.vim<CR>
 nmap <leader>t :call TrimWhitespace()<CR>
 xmap <leader>a gaip*
