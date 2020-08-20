@@ -9,7 +9,7 @@
 
 PS1='[\u@\h \W]\$ '
 
-ZSH_THEME="ne"
+ZSH_THEME="cloud"
 ZSH_THEME_RANDOM_CANDIDATES=( "ne robbyrussell" "risto" "cloud" )
 
 plugins=(
@@ -23,6 +23,9 @@ plugins=(
 
 # Use bat to highlight man pages
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+export VISUAL=nvim
+export EDITOR="$VISUAL"
 
 # Aliases
 # -------
@@ -43,6 +46,8 @@ alias vim='nvim'
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Python
+
 # Oh-my-zsh
 export ZSH="/Users/ygx/.oh-my-zsh"
 
@@ -55,7 +60,11 @@ SCRIPTS="$HOME/src/scripts"
 source $SCRIPTS/mkcd.sh
 source $SCRIPTS/start_anaconda.sh
 source $SCRIPTS/bake.sh
+source $SCRIPTS/chromium.sh
 source $ZSH/oh-my-zsh.sh
 
+# Haskell Stack
+export PATH="/Users/ygx/.local/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/llvm/bin:$PATH"

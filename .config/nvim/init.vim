@@ -47,6 +47,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'metakirby5/codi.vim'
 Plug 'dkarter/bullets.vim'
+Plug 'Rigellute/rigel'
+Plug 'yngtodd/clox_plugin'
 Plug 'rust-lang/rust.vim'
 Plug 'lervag/vimtex'
 Plug 'JuliaEditorSupport/julia-vim'
@@ -104,6 +106,8 @@ set hidden
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'python': ['/usr/local/bin/pyls'],
+    \ 'c':   ['cquery', '--log-file=/tmp/vim-cquery.log',
+    \         '--init={"cacheDirectory":"$HOME/.cquery-cache"}'],
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
@@ -196,6 +200,12 @@ function! TrimWhitespace()
     let l:save = winsaveview()
     %s/\\\@<!\s\+$//e
     call winrestview(l:save)
+endfunction
+
+" Rigel Model
+function! ColorRigel()
+    syntax enable
+    colorscheme rigel
 endfunction
 
 " Dracula Mode (Dark)
@@ -312,6 +322,7 @@ nmap <leader>e3 :call ColorForgotten()<CR>
 nmap <leader>e4 :call ColorZazen()<CR>
 nmap <leader>e5 :call ColorBase16Dark()<CR>
 nmap <leader>e6 :call ColorDogRun()<CR>
+nmap <leader>e7 :call ColorRigel()<CR>
 nmap <leader>r :so ~/.config/nvim/init.vim<CR>
 nmap <leader>t :call TrimWhitespace()<CR>
 xmap <leader>a gaip*
@@ -332,3 +343,4 @@ nmap <silent> <leader><leader> :noh<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
 
+inoremap kj <Esc>
